@@ -13,7 +13,7 @@ const PromotionCard = ({promotion}) => (
         )}
 
         <div className='promotion-card__comments-count'>{promotion.comments.length} Comentário(s)</div>
-        <a href={promotion.url} target="_blank" rel="noreferrer" className='promotion-card__link'>Ir Para o Site</a>
+        <a href={promotion.url} target="_blank" rel="noopener noreferrer" className='promotion-card__link'>Ir Para o Site</a>
       </footer>
     </div>
   </div>

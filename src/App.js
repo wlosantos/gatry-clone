@@ -1,4 +1,4 @@
-import PromotionCard from "./components/Promotion/card/Cards";
+import PromotionCard from "components/Promotion/card/Cards";
 
 function App() {
 
