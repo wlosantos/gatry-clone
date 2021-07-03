@@ -1,14 +1,12 @@
-import PromotionCard from 'components/Promotion/card/Cards'
-import React from 'react'
-import { promotions } from 'store/promotions'
+import PromotionSearch from "components/Promotion/search/Search"
+import UIContainer from "components/UI/Container"
 
 const PagesPromotionSearch = () => {
 
-  const promotion = promotions
   return (
-    <div className='App'>
-      <PromotionCard promotion={promotion} />
-    </div>
+    <UIContainer>
+      <PromotionSearch />
+    </UIContainer>
   )
 }
 
