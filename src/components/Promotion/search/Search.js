@@ -1,20 +1,25 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import PromotionCard from '../card/Cards'
+import PromotionList from '../List/List'
 
 import './search.scss'
 
 const PromotionSearch = () => {
 
   const [promotions, setPromotions] = useState([])
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
-    axios.get('http://localhost:5000/promotions?_embed=comments')
+    const params = {}
+    if(search) {
+      params.title_like = search
+    }
+    axios.get('http://localhost:5000/promotions?_embed=comments', {params})
       .then( response => {
         setPromotions(response.data)
       } )
-  },[])
+  },[search])
 
   return (
     <div className='promotion-search'>
@@ -26,11 +31,11 @@ const PromotionSearch = () => {
         <input 
           type='search' 
           placeholder='Buscar'
+          value={search}
+          onChange={ e => setSearch(e.target.value)}
         />
       </section>
-      {promotions.map( (promotion) => (
-        <PromotionCard promotion={promotion} key={promotion.id} />
-      ))}
+      <PromotionList promotions={promotions} loading={!promotions.length} />
     </div>
   )
 }
