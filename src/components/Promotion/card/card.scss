@@ -5,6 +5,7 @@
   display: flex;
   align-items: flex-start;
   padding: 15px;
+  margin-bottom: 20px;
 
   .promotion-card__image {
     width: 100px;
@@ -12,7 +13,7 @@
   }
   .promotion-card__title {
     font-size: 16px;
-    font-weight: 700px;
+    font-weight: 700;
     color: #2c3e50;
   }
   .promotion-card__price {
@@ -22,12 +23,13 @@
   }
   .promotion-card__footer {
     display: flex;
+    justify-content: space-between;
     align-items: center;
   }
   .promotion-card__comment {
+    flex: 1;
     color: #95a5a6;
     font-weight: 700;
-    flex: 1;
   }
   .promotion-card__comments-count {
     margin-left: auto;
@@ -42,5 +44,10 @@
     text-decoration: none;
     padding: 8px 10px;
     text-transform: uppercase;
+  }
+  .footer_rigth {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
   }
 }
