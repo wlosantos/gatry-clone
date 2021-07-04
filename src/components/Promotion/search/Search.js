@@ -1,4 +1,3 @@
-import axios from 'axios'
 import useApi from 'components/utils/useApi'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -38,7 +37,10 @@ const PromotionSearch = () => {
           onChange={ e => setSearch(e.target.value)}
         />
       </section>
-      <PromotionList promotions={loadInfo.data} loading={loadInfo.loading} />
+      <PromotionList 
+        promotions={loadInfo.data} 
+        loading={loadInfo.loading}
+        error={loadInfo.error} />
     </div>
   )
 }
