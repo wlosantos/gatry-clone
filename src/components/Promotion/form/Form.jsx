@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import useApi from 'components/utils/useApi'
 
 import './form.scss'
 
@@ -14,13 +15,17 @@ const initialValue = {
 const PromotionForm = ({ id }) => {
   const [values, setValues] = useState(id ? null : initialValue)
   const history = useHistory()
+  const [load] = useApi({
+    url: `/promotions/${id}`,
+    method: 'get',
+    onCompleted: (response) => {
+      setValues(response.data)
+    }
+  })
 
   useEffect(() => {
     if(id) {
-      axios.get(`http://localhost:5000/promotions/${id}`)
-        .then( response => {
-          setValues(response.data)
-        })
+      load()
     }
   }, [id])
 
