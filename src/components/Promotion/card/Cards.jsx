@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './card.scss'
 
 const PromotionCard = ({promotion}) => (
@@ -15,6 +16,7 @@ const PromotionCard = ({promotion}) => (
         <div className='footer_rigth'>
           <div className='promotion-card__comments-count'>{promotion.comments.length} Comentário(s)</div>
           <a href={promotion.url} target="_blank" rel="noopener noreferrer" className='promotion-card__link'>Ir Para o Site</a>
+          <Link to={`/edit/${promotion.id}`}> Editar</Link>
         </div>
       </footer>
     </div>
