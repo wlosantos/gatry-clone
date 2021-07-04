@@ -8,7 +8,6 @@ import './search.scss'
 
 const PromotionSearch = () => {
 
-  const [promotions, setPromotions] = useState([])
   const [search, setSearch] = useState('')
   const [load, loadInfo] = useApi({
     url: 'http://localhost:5000/promotions',
@@ -18,12 +17,9 @@ const PromotionSearch = () => {
       _order: 'desc',
       _sort: 'id',
       title_like: search || undefined,
-    },
-    onCompleted: (response) => {
-      setPromotions(response.data)
     }
   })
-  console.log(loadInfo.data)
+
   useEffect(() => {
     load()
   },[search])
@@ -42,7 +38,7 @@ const PromotionSearch = () => {
           onChange={ e => setSearch(e.target.value)}
         />
       </section>
-      <PromotionList promotions={promotions} loading={!promotions.length} />
+      <PromotionList promotions={loadInfo.data} loading={loadInfo.loading} />
     </div>
   )
 }

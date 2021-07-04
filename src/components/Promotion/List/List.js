@@ -2,8 +2,12 @@ import React from 'react'
 import PromotionCard from '../card/Cards'
 
 const PromotionList = ({ loading, promotions }) => {
-  if (loading) {
+  if (loading || !promotions) {
     return <div>Carregando...</div>
+  }
+  
+  if (promotions.length === 0) {
+    return <div>Nenhum Resultado Encontrado!</div>
   }
 
   return (
