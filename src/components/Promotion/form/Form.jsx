@@ -22,7 +22,7 @@ const PromotionForm = ({ id }) => {
           setValues(response.data)
         })
     }
-  }, [])
+  }, [id])
 
   function onChange(event) {
     const {name, value} = event.target

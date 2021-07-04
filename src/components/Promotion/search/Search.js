@@ -1,4 +1,5 @@
 import axios from 'axios'
+import useApi from 'components/utils/useApi'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PromotionList from '../List/List'
@@ -9,16 +10,22 @@ const PromotionSearch = () => {
 
   const [promotions, setPromotions] = useState([])
   const [search, setSearch] = useState('')
-
-  useEffect(() => {
-    const params = {}
-    if(search) {
-      params.title_like = search
+  const [load, loadInfo] = useApi({
+    url: 'http://localhost:5000/promotions',
+    method: 'get',
+    params: {
+      _embed: 'comments',
+      _order: 'desc',
+      _sort: 'id',
+      title_like: search || undefined,
+    },
+    onCompleted: (response) => {
+      setPromotions(response.data)
     }
-    axios.get('http://localhost:5000/promotions?_embed=comments&_order=desc&_sort=id', {params})
-      .then( response => {
-        setPromotions(response.data)
-      } )
+  })
+  console.log(loadInfo.data)
+  useEffect(() => {
+    load()
   },[search])
 
   return (
