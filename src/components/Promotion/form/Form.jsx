@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import useApi from 'components/utils/useApi'
@@ -39,6 +38,7 @@ const PromotionForm = ({ id }) => {
     if(id) {
       load()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
   function onChange(event) {
