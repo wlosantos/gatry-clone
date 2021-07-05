@@ -39,9 +39,20 @@ const PromotionModal = ({promotionId, onClickClose}) => {
       setComment('')
       load()
     } catch (e) {
-
     }
 
+  }
+
+  async function sendAnswer(text, parentId) {
+    await sendComment({
+      data: {
+        userId: 1,
+        promotionId,
+        comment: text,
+        parentId
+      }
+    })
+    load()
   }
 
   return (
@@ -56,7 +67,7 @@ const PromotionModal = ({promotionId, onClickClose}) => {
             {sendCommentInfo.loading ? 'Envinado...' : 'Enviar'}
           </button>
         </form>
-        <CommentsTree comments={loadInfo.data} />
+        <CommentsTree comments={loadInfo.data} sendComment={sendAnswer} />
       </UIModal>
     </div>
   )
