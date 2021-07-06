@@ -62,7 +62,8 @@ const PromotionModal = ({promotionId, onClickClose}) => {
           <textarea 
             name="" placeholder="commentar..."
             value={comment}
-            onChange={e => setComment(e.target.value)} />
+            onChange={e => setComment(e.target.value)}
+            desabled={sendCommentInfo.loading} />
           <button type="submit" disabled={sendCommentInfo.loading}>
             {sendCommentInfo.loading ? 'Envinado...' : 'Enviar'}
           </button>
